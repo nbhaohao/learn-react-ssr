@@ -5,8 +5,19 @@ import Home from "./containers/Home";
 const app = express();
 const port = 3000;
 
+const content = renderToString(<Home />);
+
 app.get("/", (req, res) => {
-  res.send(renderToString(<Home />));
+  res.send(`
+    <html>
+        <head>
+        <title>ssr</title>
+</head>
+<body>
+${content}
+</body>
+    </html>
+  `);
 });
 
 app.listen(port, () => {
