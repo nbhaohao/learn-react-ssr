@@ -1,20 +1,12 @@
 import express from "express";
+import React from "react";
+import { renderToString } from "react-dom/server";
 import Home from "./containers/Home";
 const app = express();
 const port = 3000;
 
 app.get("/", (req, res) => {
-  res.send(`
-    <html>
-        <header>
-            <title>hello</title>
-        </header>
-        <body>
-        <h1>first lesson</h1>
-        <p>hello world</p>
-</body>
-    </html>
-  `);
+  res.send(renderToString(<Home />));
 });
 
 app.listen(port, () => {
