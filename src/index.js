@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
+import Home from "./containers/Home";
 const app = express();
 const port = 3000;
-const Home = require("./containers/Home");
 
 app.get("/", (req, res) => {
   res.send(`
