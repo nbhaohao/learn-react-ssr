@@ -4,6 +4,7 @@ import { renderToString } from "react-dom/server";
 import Home from "./containers/Home";
 const app = express();
 const port = 3000;
+app.use(express.static("public"));
 
 const content = renderToString(<Home />);
 
@@ -14,7 +15,9 @@ app.get("/", (req, res) => {
         <title>ssr</title>
 </head>
 <body>
-${content}
+<div id="root">${content}</div>
+<script src="./index.js">
+</script>
 </body>
     </html>
   `);
